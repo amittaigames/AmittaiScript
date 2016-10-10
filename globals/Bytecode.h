@@ -7,6 +7,9 @@ enum Ops {
     NIL,
     ICONST,
     IADD,
+    ISUB,
+    ISTORE,
+    ILOAD,
     PRINT,
     HALT
 };
@@ -17,6 +20,7 @@ private:
     std::string name;
     int args;
 
+    static void add(Bytecode bc);
 public:
     static Bytecode* list;
 

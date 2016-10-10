@@ -21,8 +21,8 @@ void VM::trace(int opcode) {
     printf("\n");
 }
 
-void VM::run() {
-    while (ip <= sizeof(src)) {
+void VM::run(int codeLength) {
+    while (ip <= codeLength) {
         int opcode = src[ip];
         if (showTrace) trace(opcode);
         ip++;
@@ -33,6 +33,18 @@ void VM::run() {
             }
             case IADD: {
                 push(pop() + pop());
+                break;
+            }
+            case ISUB: {
+                push(pop() - pop());
+                break;
+            }
+            case ISTORE: {
+                globals[src[ip++]] = pop();
+                break;
+            }
+            case ILOAD: {
+                push(globals[src[ip++]]);
                 break;
             }
             case PRINT: {

@@ -25,7 +25,7 @@ public:
 
     void trace(int opcode);
 
-    void run();
+    void run(int codeLength);
     void push(int data);
     int pop();
 };

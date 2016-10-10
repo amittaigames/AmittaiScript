@@ -5,11 +5,18 @@ Bytecode* Bytecode::list;
 void Bytecode::init() {
     list = (Bytecode*)malloc(sizeof(Bytecode) * (HALT + 1));
 
-    list[0] = Bytecode(NIL, "???", 0);
-    list[1] = Bytecode(ICONST, "iconst", 1);
-    list[2] = Bytecode(IADD, "iadd", 0);
-    list[3] = Bytecode(PRINT, "print", 0);
-    list[4] = Bytecode(HALT, "halt", 0);
+    add(Bytecode(NIL, "???", 0));
+    add(Bytecode(ICONST, "iconst", 1));
+    add(Bytecode(IADD, "iadd", 0));
+    add(Bytecode(ISUB, "isub", 0));
+    add(Bytecode(ISTORE, "istore", 1));
+    add(Bytecode(ILOAD, "iload", 1));
+    add(Bytecode(PRINT, "print", 0));
+    add(Bytecode(HALT, "halt", 0));
+}
+
+void Bytecode::add(Bytecode bc) {
+    list[bc.getOpcode()] = bc;
 }
 
 Bytecode::Bytecode(int opcode, std::string name, int args) {
