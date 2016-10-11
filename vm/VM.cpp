@@ -1,10 +1,10 @@
 #include "VM.h"
 
-VM::VM(int* src, int start, int globals) {
+VM::VM(char* src, int start, int globals) {
     this->src = src;
     this->ip = start;
-    this->globals = (int*)malloc(sizeof(int) * globals);
-    this->stack = (int*)malloc(sizeof(int) * DEFAULT_STACK_SIZE);
+    this->globals = (char*)malloc(sizeof(char) * globals);
+    this->stack = (char*)malloc(sizeof(char) * DEFAULT_STACK_SIZE);
 }
 
 VM::~VM() {
@@ -39,11 +39,11 @@ void VM::run(int codeLength) {
                 push(pop() - pop());
                 break;
             }
-            case ISTORE: {
+            case GSTORE: {
                 globals[src[ip++]] = pop();
                 break;
             }
-            case ILOAD: {
+            case GLOAD: {
                 push(globals[src[ip++]]);
                 break;
             }

@@ -9,10 +9,14 @@ void Bytecode::init() {
     add(Bytecode(ICONST, "iconst", 1));
     add(Bytecode(IADD, "iadd", 0));
     add(Bytecode(ISUB, "isub", 0));
-    add(Bytecode(ISTORE, "istore", 1));
-    add(Bytecode(ILOAD, "iload", 1));
+    add(Bytecode(GSTORE, "gstore", 1));
+    add(Bytecode(GLOAD, "gload", 1));
     add(Bytecode(PRINT, "print", 0));
     add(Bytecode(HALT, "halt", 0));
+}
+
+void Bytecode::cleanUp() {
+    free(list);
 }
 
 void Bytecode::add(Bytecode bc) {

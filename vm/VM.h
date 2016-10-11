@@ -9,9 +9,9 @@
 
 class VM {
 private:
-    int* src;
-    int* globals;
-    int* stack;
+    char* src;
+    char* globals;
+    char* stack;
 
     int sp = -1;
     int ip = 0;
@@ -20,7 +20,7 @@ private:
 public:
     bool showTrace = false;
 
-    VM(int* src, int start, int globals);
+    VM(char* src, int start, int globals);
     virtual ~VM();
 
     void trace(int opcode);

@@ -8,8 +8,8 @@ enum Ops {
     ICONST,
     IADD,
     ISUB,
-    ISTORE,
-    ILOAD,
+    GSTORE,
+    GLOAD,
     PRINT,
     HALT
 };
@@ -28,6 +28,7 @@ public:
     ~Bytecode();
 
     static void init();
+    static void cleanUp();
 
     int getOpcode();
     std::string getName();

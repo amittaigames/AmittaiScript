@@ -1,0 +1,9 @@
+iconst 23
+gstore 0
+iconst 27
+iconst 12
+iadd
+print
+gload 0
+print
+halt
